@@ -1,2 +1,3 @@
 .DS_Store
 qt-pushnotifications.pro.user
+apns.pem
