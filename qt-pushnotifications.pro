@@ -1,5 +1,9 @@
 QT += qml quick
 
+android{
+    QT += androidextras
+}
+
 CONFIG += c++11
 
 SOURCES += \
@@ -35,5 +39,25 @@ ios{
 
 }
 
+android{
+    ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+
+    ################# adapt that accordingly #######################
+    ANDROID_JAVA_SOURCES.path = /src/com/example/example
+    ################################################################
+
+    ANDROID_JAVA_SOURCES.files = $$files($$PWD/source/java/*.java)
+    INSTALLS += ANDROID_JAVA_SOURCES
+}
+
 HEADERS += \
     source/cpp/misc/pushnotification.h
+
+DISTFILES += \
+    android/AndroidManifest.xml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat

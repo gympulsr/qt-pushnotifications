@@ -1,3 +1,9 @@
 .DS_Store
 qt-pushnotifications.pro.user
 apns.pem
+android/google-services.json
+android/.build
+android/gradle.properties
+android/gradle.properties~
+android/local.properties
+android/local.properties~

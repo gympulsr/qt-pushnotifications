@@ -28,7 +28,9 @@ ApplicationWindow {
             anchors.topMargin: 20
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
             width: parent.width - 20
-            text: "Token: " + PushNotificationRegistrationTokenHandler.apnsRegistrationToken
+            text: Qt.platform.os === "ios" ?
+                      ("Token: " + PushNotificationRegistrationTokenHandler.apnsRegistrationToken)
+                    : ("Token: " + PushNotificationRegistrationTokenHandler.gcmRegistrationToken)
         }
 
         Text{

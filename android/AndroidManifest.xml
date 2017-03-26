@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<manifest
+    package="com.example.example"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionName="0.1.7"
+    android:versionCode="8"
+    android:installLocation="auto">
+    <uses-sdk android:minSdkVersion="16"
+    android:targetSdkVersion="16"/>
+    <supports-screens
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:anyDensity="true"
+        android:smallScreens="true"/>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <permission
+        android:name="com.example.example.permission.C2D_MESSAGE"
+        android:protectionLevel="signature"/>
+    <uses-permission android:name="com.example.example.permission.C2D_MESSAGE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <application
+        android:hardwareAccelerated="true"
+        android:name="com.example.example.MyApplication"
+        android:label="qt-push notifications example"
+        android:icon="@drawable/icon">
+        <meta-data android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version"/>
+        <activity
+            android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation"
+            android:name="com.example.example.Vibrate"
+            android:label="qt-push notifications example"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            <meta-data android:name="android.app.lib_name" android:value="-- %%INSERT_APP_LIB_NAME%% --"/>
+            <meta-data android:name="android.app.qt_sources_resource_id" android:resource="@array/qt_sources"/>
+            <meta-data android:name="android.app.repository" android:value="default"/>
+            <meta-data android:name="android.app.qt_libs_resource_id" android:resource="@array/qt_libs"/>
+            <meta-data android:name="android.app.bundled_libs_resource_id" android:resource="@array/bundled_libs"/>
+            <!-- Deploy Qt libs as part of package -->
+            <meta-data android:name="android.app.bundle_local_qt_libs" android:value="-- %%BUNDLE_LOCAL_QT_LIBS%% --"/>
+            <meta-data android:name="android.app.bundled_in_lib_resource_id" android:resource="@array/bundled_in_lib"/>
+            <meta-data android:name="android.app.bundled_in_assets_resource_id" android:resource="@array/bundled_in_assets"/>
+            <!-- Run with local libs -->
+            <meta-data android:name="android.app.use_local_qt_libs" android:value="-- %%USE_LOCAL_QT_LIBS%% --"/>
+            <meta-data android:name="android.app.libs_prefix" android:value="/data/local/tmp/qt/"/>
+            <meta-data android:name="android.app.load_local_libs" android:value="-- %%INSERT_LOCAL_LIBS%% --"/>
+            <meta-data android:name="android.app.load_local_jars" android:value="-- %%INSERT_LOCAL_JARS%% --"/>
+            <meta-data android:name="android.app.static_init_classes" android:value="-- %%INSERT_INIT_CLASSES%% --"/>
+
+            <!--  Messages maps -->
+            <meta-data android:value="@string/ministro_not_found_msg" android:name="android.app.ministro_not_found_msg"/>
+            <meta-data android:value="@string/ministro_needed_msg" android:name="android.app.ministro_needed_msg"/>
+            <meta-data android:value="@string/fatal_error_msg" android:name="android.app.fatal_error_msg"/>
+            <!--  Messages maps -->
+
+            <!-- Splash screen -->
+            <!-- meta-data android:name="android.app.splash_screen_drawable" android:resource="@drawable/logo"/ -->
+            <!-- meta-data android:name="android.app.splash_screen_sticky" android:value="true"/ -->
+            <!-- Splash screen -->
+
+            <!-- Background running -->
+            <!-- Warning: changing this value to true may cause unexpected crashes if the
+                          application still try to draw after
+                          "applicationStateChanged(Qt::ApplicationSuspended)"
+                          signal is sent! -->
+            <meta-data android:name="android.app.background_running" android:value="false"/>
+            <!-- Background running -->
+        </activity>
+
+
+        <!-- Google GCM related stuff -->
+        <service
+            android:name="com.example.example.RegistrationIntentService"
+            android:exported="false"/>
+
+        <service
+            android:name="com.example.example.MyInstanceIDListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID"/>
+            </intent-filter>
+        </service>
+
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+                <category android:name="com.example.example"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.example.example.MyGcmListenerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+        </service>
+        <!--                            -->
+
+    </application>
+
+    <!-- The following comment will be replaced upon deployment with default features based on the dependencies of the application.
+         Remove the comment if you do not require these default features. -->
+    <!-- %%INSERT_FEATURES -->
+
+<!-- %%INSERT_PERMISSIONS -->
+</manifest>
