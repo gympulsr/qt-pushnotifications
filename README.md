@@ -2,7 +2,11 @@
 
 This repository demonstrates how to implement push notifications with Qt on iOs (android will follow soon).
 
-For more informations see the following [blog entry](https://gympulsr.com/blog/qt/2017/03/08/push-notification-ios-qt.html)
+For more informations see the following blog entries: 
+
+[iOs push notifications with Qt](https://gympulsr.com/blog/qt/2017/03/08/push-notification-ios-qt.html)
+
+[android push notifications with Qt](https://gympulsr.com/blog/qt/2017/03/26/push-notification-android-qt.html)
 
 About gympulsr
 ==============
