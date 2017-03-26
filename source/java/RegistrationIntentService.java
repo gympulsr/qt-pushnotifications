@@ -14,12 +14,6 @@ import com.google.android.gms.iid.InstanceID;
 
 import java.io.IOException;
 
-/*class MyJavaNatives
-{
-    // declare the native method
-    public static native void sendResult(String res);
-}*/
-
 public class RegistrationIntentService extends IntentService {
 
     private static final String TAG = "RegIntentService";

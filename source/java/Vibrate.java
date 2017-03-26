@@ -75,18 +75,6 @@ public class Vibrate extends org.qtproject.qt5.android.bindings.QtActivity
         super.onPause();
     }
 
-    /*@Override
-    public void onDestroy() {
-        super.onDestroy();
-    }*/
-
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        QFacebookBinding.onActivityResult(requestCode, resultCode, data);
-    }*/
-
-
     //
     // Check the device to make sure it has the Google Play Services APK. If
     // it doesn't, display a dialog that allows users to download the APK from
@@ -132,7 +120,6 @@ public class Vibrate extends org.qtproject.qt5.android.bindings.QtActivity
             }
         }
         else m_vibrator.vibrate(x);
-        //MyJniNatives.log(new String("vibrated"));
     }
     // end vibrate
 
